@@ -1,0 +1,19 @@
+{{page-title "Todos"}}
+
+<form {{action 'createTodo' on="submit"}}>
+  {{input type="text" value=todoTitle placeholder="Task.."}}
+  <button type="submit">Add</button>
+</form>
+
+{{#each model as |todo|}}
+    <h1>{{todo.title}}</h1>
+    <div class="todo title">
+      <span >Title:</span> {{todo.title}}
+    </div>
+    <div class="todo done">
+      <span>Done:</span>
+      <input type="checkbox" checked={{todo.done}} {{ action "editTodo" todo target.checked on="change"}} >
+    </div>
+{{/each}}
+
+{{outlet}}
